@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+
+        }
+        body{
+            background: #999;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: #222;
+        }
+        .tasks{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .task-item{
+            color:whitesmoke;
+            margin: 10px;
+        }
+        .flex{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+
+        }
+        a{
+            margin-left: 10px;
+            text-decoration: none;
+            color: yellow;
+        }
+        form{
+            margin: 10px auto auto 10px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+
+        }
+        #name{
+            color: skyblue;
+            font-size: xx-large;
+            margin: 10px;
+        }
+        #task{
+            width: 200px;
+            height: 35px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 0.5rem;
+            border: orange solid 2px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        #submit{
+            width: 100px;
+            height: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 0.5rem;
+            border: rgb(24, 24, 22) solid 2px;
+            background-color: aquamarine;
+            border: orange solid 2px;
+
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <h1 align="center" id="name">Todo List</h1>
+    <hr>
+    <div class="tasks">
+        <% for(let i of tasks_list) { %>
+            <div class="flex">
+                <h2 class="task-item" align="center"><%= i.task %></h2>
+            
+                <a href="/delete-task/?id=<%= i._id %>">
+                    Check
+                </a>
+            </div>
+            
+            
+        <% } %>
+
+    </div>
+    <hr>
+    <div class="addTask">
+        <form action="/create-task" method="POST" align="center">
+            <input type="text" id="task" name="task" placeholder="add a task....." required />
+            <input id="submit" type="submit" name="submit" />
+        </form>
+    </div>
+</body>
+</html>
